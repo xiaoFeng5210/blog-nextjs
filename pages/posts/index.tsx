@@ -1,14 +1,10 @@
 import {NextPage} from "next";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import {usePosts} from "../../hooks/usePosts";
 
 const PostsIndex: NextPage = () => {
-    const [posts, setPosts] = useState<string[]>([])
-    useEffect(() => {
-        axios.get('/api/v1/posts').then((response) => {
-            setPosts(response.data);
-        })
-    }, [])
+    const { posts } = usePosts()
     return (
         <div>
             {
